@@ -1,7 +1,7 @@
 # 광주소프트웨어마이스터고등학교
 
 # 아래 주소를 입력하면 이곳으로 올 수 있습니다.
--https://github.com/code-every/gsm3
+https://github.com/code-every/gsm3
 
 # 설치해주세요.
 - chrome web browser
