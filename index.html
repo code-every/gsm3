@@ -17,32 +17,27 @@
       </ol>
       <div>
         <h2>Welcome</h2>
+<script>
+function dayNightMode(bgColor, fontColor, label){
+  var body = document.querySelector('body');
+  body.style.backgroundColor= bgColor;
+  body.style.color=fontColor;
+  document.querySelector('#modeBtn').value = label;
+
+  var links = document.querySelectorAll('a');
+  var i = 0;
+  while(i < links.length){
+      links[i].style.color = fontColor;
+      i = i + 1;
+  }
+}
+</script>
 <input id="modeBtn" type="button" value="night" onclick="
  var mode = document.querySelector('#modeBtn').value;
  if(mode === 'night'){
-    var body = document.querySelector('body');
-    body.style.backgroundColor='black';
-    body.style.color='white';
-    document.querySelector('#modeBtn').value = 'day';
-    
-    var links = document.querySelectorAll('a');
-    var i = 0;
-    while(i < links.length){
-        links[i].style.color = 'white';
-        i = i + 1;
-    }
+    dayNightMode('cyan', 'blue', 'day');
  } else {
-    var body = document.querySelector('body');
-    body.style.backgroundColor='white';
-    body.style.color='black';
-    document.querySelector('#modeBtn').value = 'night';
-
-    var links = document.querySelectorAll('a');
-    var i = 0;
-    while(i < links.length){
-        links[i].style.color = 'black';
-        i = i + 1;
-    }
+    dayNightMode('white', 'black', 'night');
  }
 ">
 

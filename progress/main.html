@@ -3,6 +3,7 @@
 
 <head>
     <script src="script.js"></script>
+    <link rel="stylesheet" href="animation.css">
 </head>
 
 <body>
@@ -23,6 +24,7 @@
             margin:0;
             background-image:url('https://source.unsplash.com/1600x900/?relax');
             background-size:cover;
+            overflow:hidden;
         }
     </style>
     <div id="ver">
@@ -40,6 +42,8 @@
         var duration = Number(prompt('분을 알려주세요.') * 60 * 1000);
         var container = document.querySelector('#container');
         var bgChanged = false;
+        var hurryupFlag = false;
+        var endFlag = false;
         var bar = new ProgressBar.Circle(container, {
             duration: duration,
             svgStyle: {
@@ -55,16 +59,26 @@
             step: function(state, circle, attachment) {
                 var remained = Math.floor(duration*(1-circle.value())/1000);
                 var m = Math.floor(remained/60);
+                var s = remained%60;
                 if(!bgChanged && m === 0){
                     bgChanged = true;
                     document.querySelector('body').style.backgroundImage = "url('https://source.unsplash.com/1600x900/?code')";
                     document.querySelector('body').style.backgroundSize = "cover";
-                    console.log('loaded');
                 }
-                var s = remained%60;
-                console.log(s);
-                //console.log(duration*(1-circle.value()));
-                //circle.setText(Math.round(circle.value() * 100) + ' %');
+                if(!hurryupFlag && (m === 0 && s < 30)){
+                    document.querySelector('#container').classList.add('animated');
+                    document.querySelector('#container').classList.add('infinite');
+                    document.querySelector('#container').classList.add('flip');
+                    hurryupFlag = true;
+                }
+                console.log(endFlag, m, s);
+                if(!endFlag && (m === 0 && s === 0)){
+                    document.querySelector('#container').className = '';
+                    document.querySelector('#container').classList.add('animated');
+                    document.querySelector('#container').classList.add('infinite');
+                    document.querySelector('#container').classList.add('pulse');
+                    endFlag = true;
+                }
                 circle.setText(m+':'+s);
             }
         });
