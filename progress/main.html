@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Bungee&display=swap');
+        #hor {
+            display: grid;
+            grid-template-columns: 1fr 400px 1fr;
+        }
+        #ver{
+            display: grid;
+            grid-template-rows: 1fr 400px 1fr;
+            height:100vh;
+        }
+        body{
+            font-family: 'Bungee', cursive;
+            font-size:6rem;
+            margin:0;
+            background-image:url('https://source.unsplash.com/1600x900/?relax');
+            background-size:cover;
+        }
+    </style>
+    <div id="ver">
+        <div></div>
+        <div id="hor">
+            <div></div>
+            <div id="container"></div>
+            <div></div>
+        </div>
+        <div></div>
+    </div>
+    
+    
+    <script>
+        var duration = Number(prompt('분을 알려주세요.') * 60 * 1000);
+        var container = document.querySelector('#container');
+        var bgChanged = false;
+        var bar = new ProgressBar.Circle(container, {
+            duration: duration,
+            svgStyle: {
+                display: 'block',
+                width: '400px'
+            },
+            strokeWidth:10,
+            trailColor: 'rgba(0,0,0,0.5)',
+            color:'red',
+            text: {
+                value: 'Text'
+            },
+            step: function(state, circle, attachment) {
+                var remained = Math.floor(duration*(1-circle.value())/1000);
+                var m = Math.floor(remained/60);
+                if(!bgChanged && m === 0){
+                    bgChanged = true;
+                    document.querySelector('body').style.backgroundImage = "url('https://source.unsplash.com/1600x900/?code')";
+                    document.querySelector('body').style.backgroundSize = "cover";
+                    console.log('loaded');
+                }
+                var s = remained%60;
+                console.log(s);
+                //console.log(duration*(1-circle.value()));
+                //circle.setText(Math.round(circle.value() * 100) + ' %');
+                circle.setText(m+':'+s);
+            }
+        });
+        bar.animate(1.0);
+    </script>
+</body>
+
+</html>
