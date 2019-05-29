@@ -24,11 +24,25 @@
     body.style.backgroundColor='black';
     body.style.color='white';
     document.querySelector('#modeBtn').value = 'day';
+    
+    var links = document.querySelectorAll('a');
+    var i = 0;
+    while(i < links.length){
+        links[i].style.color = 'white';
+        i = i + 1;
+    }
  } else {
     var body = document.querySelector('body');
     body.style.backgroundColor='white';
     body.style.color='black';
     document.querySelector('#modeBtn').value = 'night';
+
+    var links = document.querySelectorAll('a');
+    var i = 0;
+    while(i < links.length){
+        links[i].style.color = 'black';
+        i = i + 1;
+    }
  }
 ">
 

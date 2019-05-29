@@ -18,3 +18,6 @@ https://www.dropbox.com/sh/wtjsqpo9vxblogr/AACsZV40aS09frb9OKi7uVdCa?dl=0
 - JavaScript : https://opentutorials.org/course/3085
 - NodeJS : https://opentutorials.org/course/3332
 - 전체 커리큘럼 : https://seomal.org
+
+# 번역도움
+- https://gist.github.com/egoing/7c49039ac0826895bbfa5fb349cd2629
