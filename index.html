@@ -17,8 +17,16 @@
       </ol>
       <div>
         <h2>Welcome</h2>
-        <input type="button" value="night">
-        <input type="button" value="day">
+        <input type="button" value="night" onclick="
+var body = document.querySelector('body');
+body.style.backgroundColor='black';
+body.style.color='white';
+        ">
+        <input type="button" value="day" onclick="
+var body = document.querySelector('body');
+body.style.backgroundColor='white';
+body.style.color='black';
+        ">
         Hello, <a href="http://w3c.org">World Wide Web</a>!
       </div>
 </div>
